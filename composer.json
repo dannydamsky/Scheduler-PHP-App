@@ -1,0 +1,25 @@
+{
+  "name": "scheduler/scheduler",
+  "description": "A job scheduler application built without any dependencies.",
+  "minimum-stability": "stable",
+  "authors": [
+    {
+      "name": "Danny Damsky",
+      "email": "dannydamsky99@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.4",
+    "ext-pdo": "*",
+    "ext-json": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Base\\": "base/",
+      "App\\": "app/"
+    },
+    "files": [
+      "base/functions.php"
+    ]
+  }
+}
