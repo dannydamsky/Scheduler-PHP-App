@@ -40,6 +40,21 @@ final class Operation extends Model
     public const OPERATION_TYPE_DELETE = 3;
 
     /**
+     * Create an operation for the model and operation type.
+     *
+     * @param Model $model
+     * @param int $operationType
+     */
+    public static function create(Model $model, int $operationType): void
+    {
+        $operation = new self();
+        $operation->setData($model->toArray());
+        $operation->setModel(get_class($model));
+        $operation->setType($operationType);
+        $operation->save();
+    }
+
+    /**
      * Entity ID.
      *
      * @var int

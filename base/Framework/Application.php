@@ -14,7 +14,7 @@ use Base\Console\Commands\Command;
  * Class Application
  * @package Base\Framework
  * @since 2020-05-07
- * @author Danny Damsky
+ * @author Danny Damsky <dannydamsky99@gmail.com>
  */
 final class Application implements ApplicationInterface
 {

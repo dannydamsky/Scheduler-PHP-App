@@ -9,10 +9,12 @@ use Base\Models\Model;
 use Throwable;
 use function __;
 use function array_merge;
-use function array_values;
 
 /**
  * Class OperationExecute
+ *
+ * Executes pending operations.
+ *
  * @package App\Console\Commands
  * @since 2020-05-08
  * @author Danny Damsky <dannydamsky99@gmail.com>
@@ -113,8 +115,10 @@ final class OperationExecute extends Command
         /** @var Operation[] $updateOps */
         $updateOps = Operation::getAll();
         $updateOps = $this->mergeUpdateOperations($updateOps);
-        foreach ($updateOps as $operation) {
-            $this->updateModel($operation);
+        foreach ($updateOps as $modelClassName => $modelOperations) {
+            foreach ($modelOperations as $operation) {
+                $this->updateModel($operation);
+            }
         }
         Operation::deleteWhere(); // Delete all operations.
     }
@@ -141,7 +145,7 @@ final class OperationExecute extends Command
                 $merged[$modelClassName][$modelPrimaryKeyValue] = $operation;
             }
         }
-        return array_values($merged);
+        return $merged;
     }
 
     /**

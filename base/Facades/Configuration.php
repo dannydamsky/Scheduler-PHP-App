@@ -11,7 +11,7 @@ use Base\Api\ConfigurationInterface;
  *
  * @package Base\Facades
  * @since 2020-05-08
- * @author Danny Damsky
+ * @author Danny Damsky <dannydamsky99@gmail.com>
  * @see ConfigurationInterface
  *
  * @method static mixed get(string $key, $default = null) Retrieve the value for the given key from the configurations.

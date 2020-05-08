@@ -11,7 +11,7 @@ use Base\Api\DirectoryListInterface;
  *
  * @package Base\Facades
  * @since 2020-05-08
- * @author Danny Damsky
+ * @author Danny Damsky <dannydamsky99@gmail.com>
  * @see DirectoryListInterface
  *
  * @method static string getBasePath(string $path = '') Get the base application path.

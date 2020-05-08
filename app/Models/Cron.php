@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Base\Models\Model;
+use function date;
+use function strtotime;
 
 /**
  * Class Cron
@@ -21,6 +23,20 @@ final class Cron extends Model
      * Cron database table name.
      */
     public const TABLE_NAME = 'crons';
+
+    /**
+     * Create a cron for the given command and time.
+     *
+     * @param string $command The command to schedule.
+     * @param string $deltaTime The time delta in human-readable form (For example: "+1 hour")
+     */
+    public static function create(string $command, string $deltaTime): void
+    {
+        $cron = new self();
+        $cron->setCommand($command);
+        $cron->setScheduledAt(date('Y-m-d H:i:s', strtotime($deltaTime)));
+        $cron->save();
+    }
 
     /**
      * Entity ID.

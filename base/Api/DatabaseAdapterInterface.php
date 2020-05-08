@@ -91,6 +91,10 @@ interface DatabaseAdapterInterface
      *
      * neq: Query for data NOT EQUAL TO the value provided (Pass string as value).
      *
+     * is: Query for data IS equal to the value type provided (Pass string as value).
+     *
+     * nis: Query for data IS NOT equal to the value type provided (Pass string as value).
+     *
      */
     public function update(string $table, array $values, array $where = []): void;
 
@@ -133,6 +137,10 @@ interface DatabaseAdapterInterface
      *
      * neq: Query for data NOT EQUAL TO the value provided (Pass string as value).
      *
+     * is: Query for data IS equal to the value type provided (Pass string as value).
+     *
+     * nis: Query for data IS NOT equal to the value type provided (Pass string as value).
+     *
      */
     public function delete(string $table, array $where = []): void;
 
@@ -174,6 +182,10 @@ interface DatabaseAdapterInterface
      * eq: Query for data EQUAL TO the value provided (Pass string as value).
      *
      * neq: Query for data NOT EQUAL TO the value provided (Pass string as value).
+     *
+     * is: Query for data IS equal to the value type provided (Pass string as value).
+     *
+     * nis: Query for data IS NOT equal to the value type provided (Pass string as value).
      *
      * @return array Array of associative arrays,
      * the associative arrays will have columns as keys and row values as values.

@@ -7,11 +7,12 @@ use App\Models\Operation;
 use App\Models\RandomData;
 use Base\Console\Commands\Command;
 use function __;
-use function date;
-use function strtotime;
 
 /**
  * Class ScheduleRandomDataCreate
+ *
+ * Schedules a value to be created for the random data table.
+ *
  * @package App\Console\Commands
  * @since 2020-05-08
  * @author Danny Damsky <dannydamsky99@gmail.com>
@@ -31,16 +32,9 @@ final class ScheduleRandomDataCreate extends Command
         $randomData->setValue($data);
 
         echo __('Creating operation ...') . "\n";
-        $operation = new Operation();
-        $operation->setData($randomData->toArray());
-        $operation->setModel(RandomData::class);
-        $operation->setType(Operation::OPERATION_TYPE_CREATE);
-        $operation->save();
+        Operation::create($randomData, Operation::OPERATION_TYPE_CREATE);
 
         echo __('Creating and scheduling a cron ...') . "\n";
-        $cron = new Cron();
-        $cron->setCommand('operation:execute');
-        $cron->setScheduledAt(date('Y-m-d H:i:s', strtotime('+1 hour')));
-        $cron->save();
+        Cron::create('operation:execute', '+1 hour');
     }
 }

@@ -10,6 +10,9 @@ use function date;
 
 /**
  * Class CronRun
+ *
+ * Runs the pending cron commands.
+ *
  * @package App\Console\Commands
  * @since 2020-05-08
  * @author Danny Damsky <dannydamsky99@gmail.com>
@@ -24,7 +27,7 @@ final class CronRun extends Command
         /** @var Cron[] $crons */
         $crons = Cron::getAll([
             'scheduledAt' => ['le' => date('Y-m-d H:i:s')],
-            'executedFrom' => ['eq' => null]
+            'executedFrom' => ['is' => 'NULL']
         ]);
         $commands = config('app.commands', []);
         foreach ($crons as $cron) {
@@ -33,7 +36,7 @@ final class CronRun extends Command
             if (isset($commands[$commandName])) {
                 /** @var Command $command */
                 $command = app($commands[$commandName]);
-                echo __('Running command "%1" ...', $commandName);
+                echo __('Running command "%1" ...', $commandName) . "\n";
                 $command->execute([]);
             }
             $cron->setExecutedTo(date('Y-m-d H:i:s'));

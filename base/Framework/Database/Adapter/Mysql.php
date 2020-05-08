@@ -31,7 +31,9 @@ final class Mysql extends Pdo
         'lt' => '<',
         'le' => '<=',
         'eq' => '=',
-        'neq' => '!='
+        'neq' => '!=',
+        'is' => 'IS',
+        'nis' => 'IS NOT'
     ];
 
     /**
@@ -184,6 +186,8 @@ final class Mysql extends Pdo
                     $whereStr .= '?, ';
                 }
                 $whereStr = substr($whereStr, 0, -2) . ')';
+            } else if ($operator === 'IS' || $operator === 'IS NOT') {
+                $whereStr .= $values;
             } else {
                 $bindings[] = $values;
                 $whereStr .= '?';

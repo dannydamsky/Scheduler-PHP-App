@@ -12,7 +12,7 @@ use const DIRECTORY_SEPARATOR;
  * Class Migrate
  * @package Base\Console\Commands
  * @since 2020-05-08
- * @author Danny Damsky <danny damsky99@gmail.com>
+ * @author Danny Damsky <dannydamsky99@gmail.com>
  */
 final class Migrate extends Command
 {

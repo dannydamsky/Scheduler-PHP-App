@@ -22,6 +22,16 @@ use function json_encode;
 abstract class Model implements JsonSerializable
 {
     /**
+     * Override this constant to assign a primary key to the model.
+     */
+    public const PRIMARY_KEY = null;
+
+    /**
+     * Override this constant to assign a table name to the model.
+     */
+    public const TABLE_NAME = null;
+
+    /**
      * Retrieve all database values as an array of associative array.
      *
      * @param array $select
@@ -70,16 +80,6 @@ abstract class Model implements JsonSerializable
     {
         DB::delete(static::TABLE_NAME, $where);
     }
-
-    /**
-     * Override this constant to assign a primary key to the model.
-     */
-    public const PRIMARY_KEY = null;
-
-    /**
-     * Override this constant to assign a table name to the model.
-     */
-    public const TABLE_NAME = null;
 
     private DatabaseAdapterInterface $dbAdapter;
 
