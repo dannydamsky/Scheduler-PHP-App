@@ -6,6 +6,7 @@ A simple scheduler CLI application with a mini-framework written in clean PHP.
 Requirements
 ------------
 - PHP >= 7.4.0
+- Composer
 - PHP Extension - JSON
 - PHP Extension - PDO
 
