@@ -1,0 +1,10 @@
+#!/bin/bash
+
+if [[ ! -f "vendor/bin/phpunit" ]]; then
+	printf "PHPUnit is not installed.\n";
+	exit 1;
+fi
+
+./vendor/bin/phpunit $@;
+
+exit 0;

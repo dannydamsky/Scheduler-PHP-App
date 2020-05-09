@@ -9,6 +9,7 @@ Requirements
 - Composer
 - PHP Extension - JSON
 - PHP Extension - PDO
+- PHPUnit (Dev Dependency)
 
 How to install
 ---------------
@@ -52,7 +53,14 @@ This will give you a list of all commands that are available to you. Like so:
                         schedule:random-data:create
                         schedule:random-data:update
                         schedule:random-data:delete
-                        
+
+In order to run unit tests, you can use the "phpunit" script like so:
+
+        $ ./phpunit
+
+In case you're having issues running the "phpunit" script, make sure it has execute permissions by running:
+
+        $ chmod u+x phpunit                        
 
 Commands
 ---------
@@ -72,6 +80,7 @@ Directories
 3. config/ - Configurations directory
 4. database/ - Database directory
 5. database/migrations - Database migrations directory.
+6. tests/unit - Unit testing directory.
 
 Developer
 ---------

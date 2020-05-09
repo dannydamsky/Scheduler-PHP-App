@@ -42,15 +42,7 @@ final class Application implements ApplicationInterface
         $this->directoryList = $directoryList;
         $this->environment = $environment;
         $this->configuration = $configuration;
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function start(int $argc, array $argv): void
-    {
         $this->initProviders();
-        $this->loadCommand($argc, $argv);
     }
 
     /**
@@ -87,6 +79,14 @@ final class Application implements ApplicationInterface
         foreach ($providers as $provider) {
             $this->objectManager->get($provider)->boot();
         }
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function start(int $argc, array $argv): void
+    {
+        $this->loadCommand($argc, $argv);
     }
 
     /**

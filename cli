@@ -11,42 +11,11 @@
 ini_set('memory_limit', '128M');
 ini_set('max_execution_time', '30');
 ini_set('disable_functions', '');
-error_reporting(E_ALL | E_STRICT);
-
-// Uncomment this line for debugging/development.
-ini_set('display_errors', 'On');
-
-if (!defined('BASE_PATH')) {
-    define('BASE_PATH', __DIR__);
-}
-
-use Base\Framework\Application;
-use Base\Framework\App\ObjectManager;
-use Base\Framework\Providers\ApplicationProvider;
-
-/*
- * Validate PHP version.
- */
-if (PHP_VERSION_ID < 70400) {
-    echo "Invalid PHP Version: Please use PHP 7.4.0 and higher.\n";
-    exit(1);
-}
 
 try {
-    // Load the classes.
-    require __DIR__ . '/vendor/autoload.php';
-
-    // Initialize the ObjectManager - used for DI.
-    $objectManager = ObjectManager::getInstance();
-
-    // Initialize the application provider class and call the register method.
-    /** @var ApplicationProvider $applicationProvider */
-    $applicationProvider = $objectManager->get(ApplicationProvider::class);
-    $applicationProvider->register();
+    require_once __DIR__ . DIRECTORY_SEPARATOR . 'bootstrap.php';
 
     // Start the application.
-    /** @var Application $application */
-    $application = $objectManager->get(Application::class);
     $application->start($argc, $argv);
 } catch (Throwable $e) {
     echo "\n{$e->getMessage()}\n\n{$e->getTraceAsString()}\n\n";
